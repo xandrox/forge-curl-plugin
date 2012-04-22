@@ -17,6 +17,7 @@ package de.adorsys.forge.plugin.curl;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -77,6 +78,9 @@ public class HeaderCommandCompleter implements CommandCompleter {
 	}
 
 	public static Map<String, String> parseHeader(String headerString) {
+		if (headerString == null) {
+			return Collections.emptyMap();
+		}
 		HashMap<String, String> parsed = new HashMap<String, String>();
 		String[] headers = headerString.split(",");
 		for (String header : headers) {
